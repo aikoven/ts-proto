@@ -249,7 +249,9 @@ protoc --plugin=node_modules/ts-proto/protoc-gen-ts_proto ./batching.proto -I.
 
   See the "OneOf Handling" section.
 
-- With `--ts_proto_opt=unrecognizedEnum=false` enums will not contain an `UNRECOGNIZED` key with value of -1.
+- With `--ts_proto_opt=unrecognizedEnum=false` enums will not contain an `UNRECOGNIZED` key with value of -1, but an error will be thrown if unrecognized enum value is received.
+
+- With `--ts_proto_opt=throwOnUnrecognizedEnum=false` together with `unrecognizedEnum=false` enum values will be coerced to 0 value in unrecognized enum value is received.
 
 - With `--ts_proto_opt=lowerCaseServiceMethods=true`, the method names of service methods will be lowered/camel-case, i.e. `service.findFoo` instead of `service.FindFoo`.
 

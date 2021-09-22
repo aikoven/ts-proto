@@ -75,11 +75,19 @@ export function generateEnumFromJson(ctx: Context, fullName: string, enumDesc: E
       default:
         return ${fullName}.${UNRECOGNIZED_ENUM_NAME};
     `);
-  } else {
+  } else if (options.throwOnUnrecognizedEnum) {
     // We use globalThis to avoid conflicts on protobuf types named `Error`.
     chunks.push(code`
       default:
         throw new ${utils.globalThis}.Error("Unrecognized enum value " + object + " for enum ${fullName}");
+    `);
+  } else {
+    // Default enum value is required in proto3
+    const defaultValueDesc = enumDesc.value.find((valueDesc) => valueDesc.number === 0);
+
+    chunks.push(code`
+      default:
+        return ${fullName}.${defaultValueDesc!.name};
     `);
   }
 

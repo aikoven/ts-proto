@@ -27,6 +27,7 @@ describe('options', () => {
         "returnObservable": false,
         "snakeToCamel": true,
         "stringEnums": false,
+        "throwOnUnrecognizedEnum": true,
         "unrecognizedEnum": true,
         "useDate": "timestamp",
         "useOptionals": false,

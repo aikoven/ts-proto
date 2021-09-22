@@ -44,6 +44,7 @@ export type Options = {
   nestJs: boolean;
   env: EnvOption;
   unrecognizedEnum: boolean;
+  throwOnUnrecognizedEnum: boolean;
   exportCommonSymbols: boolean;
   outputSchema: boolean;
   // An alias of !output
@@ -75,6 +76,7 @@ export function defaultOptions(): Options {
     nestJs: false,
     env: EnvOption.BOTH,
     unrecognizedEnum: true,
+    throwOnUnrecognizedEnum: true,
     exportCommonSymbols: true,
     outputSchema: false,
     onlyTypes: false,
